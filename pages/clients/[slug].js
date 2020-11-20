@@ -56,8 +56,6 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const clients = await getAllClients();
 
-  console.log('clients :>> ', clients);
-
   return {
     paths: clients.map((_client) => {
       return {
