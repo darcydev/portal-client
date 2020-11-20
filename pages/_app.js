@@ -1,7 +1,19 @@
-import '../styles/globals.css'
+import App from 'next/app';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import Layout from '../components/Layout';
+import AppContext from '../context/AppContext';
+import { isLoggedIn } from '../lib/auth';
+
+import '../styles/global.css';
+
+export default function MyApp({ Component, pageProps }) {
+  const isAuth = isLoggedIn();
+
+  return (
+    <AppContext.Provider value={{ isAuth }}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AppContext.Provider>
+  );
 }
-
-export default MyApp
