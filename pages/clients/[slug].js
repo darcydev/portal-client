@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { isLoggedIn } from '../../lib/auth';
+import AssetUpload from '../../components/AssetUpload';
 import {
   getClientBySlug,
   getAllClients,
@@ -8,14 +8,11 @@ import {
 } from '../../lib/clients';
 
 export default function Client({ client }) {
-  const { handleSubmit, register, errors } = useForm();
-  const isAuth = isLoggedIn();
+  const { handleSubmit, register } = useForm();
 
   const { id, acf, title } = client[0];
 
   const onSubmit = (values) => {
-    console.log('values :>> ', values);
-
     updateClient(id, values);
   };
 
@@ -43,6 +40,8 @@ export default function Client({ client }) {
       ) : (
         <p>client loading...</p>
       )}
+      <h1>Asset Upload</h1>
+      <AssetUpload />
     </div>
   );
 }
