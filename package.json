@@ -14,9 +14,7 @@
     "next": "10.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-dropzone": "^11.2.4",
     "react-hook-form": "^6.11.3",
-    "reqwest": "^2.0.5",
     "styled-components": "^5.2.1"
   }
 }

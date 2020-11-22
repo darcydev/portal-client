@@ -2,15 +2,19 @@ import { useForm } from 'react-hook-form';
 
 import { createMedia } from '../lib/media';
 
-export default function AssetUpload() {
+export default function AssetUpload(id) {
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = async (values) => {
-    console.log('values :>> ', values);
-
     if (Object.keys(values).length === 0) return;
 
-    createMedia(values);
+    console.log('values :>> ', values);
+
+    // INCLUDE THE ADDITIONAL FIELDS ONTO THE VALUES OBJECT
+    const { alt_text, description } = values;
+    const postId = id.id;
+
+    createMedia(values, postId, alt_text, description);
   };
 
   return (
@@ -20,7 +24,15 @@ export default function AssetUpload() {
         type='file'
         name='file'
         accept='.jpg, .jpeg, .png'
-        ref={register}
+        ref={register({ required: true })}
+      />
+      <label>Alt Text</label>
+      <input type='text' name='alt_text' ref={register({ required: true })} />
+      <label>Description</label>
+      <input
+        type='text'
+        name='description'
+        ref={register({ required: true })}
       />
       <input type='submit' />
     </form>

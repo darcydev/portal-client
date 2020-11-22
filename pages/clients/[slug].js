@@ -12,6 +12,8 @@ export default function Client({ client }) {
 
   const { id, acf, title } = client[0];
 
+  console.log('client[0] :>> ', client[0]);
+
   const onSubmit = (values) => {
     updateClient(id, values);
   };
@@ -41,7 +43,7 @@ export default function Client({ client }) {
         <p>client loading...</p>
       )}
       <h1>Asset Upload</h1>
-      <AssetUpload />
+      <AssetUpload id={id} />
     </div>
   );
 }
