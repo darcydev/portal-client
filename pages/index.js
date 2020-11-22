@@ -1,4 +1,4 @@
-import Cookie from 'js-cookie';
+import { Button } from 'antd';
 
 import { createBrief } from '../lib/briefs';
 
@@ -6,8 +6,7 @@ export default function Index() {
   return (
     <div>
       <h1>home page</h1>
-
-      <button onClick={() => createBrief()}>create new brief</button>
+      <Button onClick={() => createBrief()}>create new brief</Button>
     </div>
   );
 }
