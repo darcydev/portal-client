@@ -1,4 +1,7 @@
+import { Skeleton } from 'antd';
+
 import { getBriefById, getAllBriefs } from '../../lib/briefs';
+import BriefForm from '../../components/Forms/BriefForm';
 
 export default function Brief({ brief }) {
   console.log('brief :>> ', brief);
@@ -6,6 +9,7 @@ export default function Brief({ brief }) {
   return (
     <div>
       <h1>single brief page</h1>
+      {brief ? <BriefForm /> : <Skeleton />}
     </div>
   );
 }
