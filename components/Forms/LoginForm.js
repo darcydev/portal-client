@@ -7,9 +7,9 @@ export const LoginForm = () => {
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = async (values) => {
-    const success = await loginUser(values);
+    const userObject = await loginUser(values);
 
-    if (success) {
+    if (userObject) {
       message.success('Login successful');
     } else {
       message.error('Login failed');

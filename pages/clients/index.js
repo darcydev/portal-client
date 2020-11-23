@@ -1,8 +1,14 @@
+import { useContext } from 'react';
 import Link from 'next/link';
 
+import UserContext from '../../context/userContext';
 import { getAllClients } from '../../lib/clients';
 
 export default function AllClients({ allClients, preview }) {
+  const { user } = useContext(UserContext);
+
+  console.log('user', user);
+
   return (
     <div>
       <h2>all list of all clients</h2>
@@ -18,6 +24,7 @@ export default function AllClients({ allClients, preview }) {
             </div>
           );
         })}
+      <h1>context testing</h1>
     </div>
   );
 }
