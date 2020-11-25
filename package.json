@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "antd": "^4.8.4",
     "js-cookie": "^2.2.1",
     "next": "10.0.2",
