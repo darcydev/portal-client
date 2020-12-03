@@ -1,68 +1,63 @@
 import { useForm } from 'react-hook-form';
 
-import AssetUpload from '../../components/AssetUpload';
 import {
-  getClientBySlug,
-  getAllClients,
-  updateClient,
+	getClientBySlug,
+	getAllClients,
+	updateClient,
 } from '../../lib/clients';
 
 export default function Client({ client }) {
-  const { handleSubmit, register } = useForm();
+	const { handleSubmit, register } = useForm();
 
-  const { id, acf, title } = client[0];
+	const { id, acf, title } = client[0];
 
-  console.log('client[0] :>> ', client[0]);
+	const onSubmit = (values) => {
+		updateClient(id, values);
+	};
 
-  const onSubmit = (values) => {
-    updateClient(id, values);
-  };
-
-  return (
-    <div>
-      <h1>single client page</h1>
-      {client.length ? (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Client name</label>
-          <input
-            type='text'
-            defaultValue={title.rendered}
-            name='client_name'
-            ref={register}
-          />
-          <label>Client code</label>
-          <input
-            type='text'
-            defaultValue={acf.client_code}
-            name='client_code'
-            ref={register}
-          />
-          <input type='submit' />
-        </form>
-      ) : (
-        <p>client loading...</p>
-      )}
-      <h1>Asset Upload</h1>
-      <AssetUpload id={id} />
-    </div>
-  );
+	return (
+		<div>
+			<h1>single client page</h1>
+			{client.length ? (
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<label>Client name</label>
+					<input
+						type='text'
+						defaultValue={title.rendered}
+						name='client_name'
+						ref={register}
+					/>
+					<label>Client code</label>
+					<input
+						type='text'
+						defaultValue={acf.client_code}
+						name='client_code'
+						ref={register}
+					/>
+					<input type='submit' />
+				</form>
+			) : (
+				<p>client loading...</p>
+			)}
+		</div>
+	);
 }
 
 export async function getStaticProps({ params }) {
-  const client = await getClientBySlug(params.slug);
+	const client = await getClientBySlug(params.slug);
 
-  return { props: { client } };
+	return { props: { client } };
 }
 
 export async function getStaticPaths() {
-  const clients = await getAllClients();
+	const clients = await getAllClients();
 
-  return {
-    paths: clients.map((_client) => {
-      return {
-        params: { slug: _client.slug },
-      };
-    }),
-    fallback: true,
-  };
+	return {
+		paths: clients.map((_client) => {
+			return {
+				params: { slug: _client.slug },
+			};
+		}),
+		fallback: true,
+	};
 }
