@@ -9,12 +9,12 @@
 	},
 	"dependencies": {
 		"@ant-design/icons": "^4.3.0",
-		"antd": "^4.8.4",
+		"antd": "^4.9.1",
 		"js-cookie": "^2.2.1",
 		"next": "10.0.3",
 		"react": "17.0.1",
 		"react-dom": "17.0.1",
-		"react-hook-form": "^6.11.3",
+		"react-hook-form": "^6.12.2",
 		"styled-components": "^5.2.1"
 	}
 }

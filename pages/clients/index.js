@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { getAllClients } from '../../lib/clients';
 
 export default function AllClients({ allClients, preview }) {
+	console.log('allClients :>> ', allClients);
+
 	return (
 		<div>
 			<h2>all list of all clients</h2>
